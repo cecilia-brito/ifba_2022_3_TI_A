@@ -154,17 +154,17 @@ ALTER TABLE Cao_Competicao
         
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Rottweiler',119,20.45,778,'Nenhuma');
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Pastor Alemão',46,21.21,1315,'Nenhuma');
-INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Pastor Belga ',41,20.63,541,'Nenhuma');
+INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Pastor Belga ',41,20.63,541,'Nenhuma');
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Pequinês',35,23.09,1447,'Nenhuma');
-INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Pitbull ',37,18.26,706,'Nenhuma');
-INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Boxer ',128,22.79,1498,'Nenhuma');
-INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Bulldog ',36,18.44,1161,'Nenhuma');
+INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Pitbull ',37,18.26,706,'Nenhuma');
+INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Boxer ',128,22.79,1498,'Nenhuma');
+INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Bulldog ',36,18.44,1161,'Nenhuma');
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Labrador Retriever',50,15.33,716,'Nenhuma');
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Chihuahua',16,19.62,843,'Nenhuma');
-INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Dálmata ',93,16.02,761,'Nenhuma');
+INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Dálmata ',93,16.02,761,'Nenhuma');
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('São Bernardo',96,23.05,1479,'Nenhuma');
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Husky Siberiano',83,17.43,836,'Nenhuma');
-INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Dobermann ',129,17.15,1245,'Nenhuma');
+INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Dobermann ',129,17.15,1245,'Nenhuma');
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Dogue Alemão',32,17.34,534,'Nenhuma');
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Cocker Spaniel',68,17.77,888,'Nenhuma');
 -- MOSTRANDO OS VALORES INSERIDOS
@@ -327,38 +327,181 @@ INSERT INTO Cao_Competicao (NumPedigre,CodCompeticao,Colocacao) VALUES (1,6,2);
 INSERT INTO Cao_Competicao (NumPedigre,CodCompeticao,Colocacao) VALUES (11,7,1);
 INSERT INTO Cao_Competicao (NumPedigre,CodCompeticao,Colocacao) VALUES (13,5,4);
 INSERT INTO Cao_Competicao (NumPedigre,CodCompeticao,Colocacao) VALUES (6,3,3);
-        
+
+select * from Cao_Competicao
+/*Lista 1 
+Questão 01
+Liste o Nome do treinador, seu endereço e telefone, e, o nome de todos os cães que ele treinou , as menções, a data de treinamento.*/
 select T.NomeTreinador, T.EnderecoTreinador,T.TelefoneTreinador, CT.Data_treino, M.DescMencao, C.NomeCao from Treinador T, Cao_Treinador CT, Cao C, Mencao M
 where T.CodTreinador = CT.CodTreinador and C.NumPedigre = CT.NumPedigre and M.CodMencao = CT.CodMencao;
-
+/*
+Questão 02
+Liste o nome do treinador e o nome dos cães, somente dos cães que receberam menção “Ótimo”*/
 select T.NomeTreinador, CT.Data_treino, M.DescMencao, C.NomeCao from Treinador T, Cao_Treinador CT, Cao C, Mencao M
 where T.CodTreinador = CT.CodTreinador and C.NumPedigre = CT.NumPedigre and M.CodMencao = CT.CodMencao and CT.CodMencao = 4;
 
+/*Questão 03
+Liste todos os cães da raça Rottweiler, ordenado pelo nome do cão
+*/
 select C.NomeCao, C.NumPedigre, R.NomeRaca, R.CodRaca from  Cao C, Raca R
 where C.CodRaca = R.CodRaca and C.CodRaca = 1
 order by C.NomeCao;
 
+/*Questão 04
+Liste todos os clientes, com seus respectivos endereços e telefones, que tem Pastor Belga, ordenados pelo nome do cliente
+*/
 select C.NomeCliente, C.EnderecoCliente, C.TelefoneCliente, Cao.NomeCao, R.NomeRaca, Cao.CodRaca from Cliente C, Cao Cao, Raca R
 where C.CodCliente = Cao.CodCliente and Cao.CodRaca = 3 and Cao.CodRaca = R.CodRaca
 order by C.NomeCliente;
 
+/*Questão 05
+Liste os nomes dos cães, o nome da vacina que tomaram e a data da aplicação
+*/
 select C.NomeCao, V.TipoVacina, CV.DataAplicacao from  Cao C, Cao_Vacina CV, Vacina V
 where C.NumPedigre = CV.NumPedigre and V.CodVacina = CV.CodVacina
 order by C.NomeCao;
 
-
-select C.NomeCao, C.NumPedigre, C.CodPai, C.CodMae, R.NomeRaca, R.CodRaca from  Cao C, Raca R
-where C.CodRaca = R.CodRaca
+/*Questão 06
+Liste o nome e a raça de cada cão, com seus respectivos pais e suas respectivas raças
+*/
+select C.NumPedigre, C.NomeCao, R.NomeRaca  as "Raça da Mãe", P.NomeCao as Pai, RP.NomeRaca as "Raça do Pai", C.CodPai, M.NomeCao as "Mãe",  RM.NomeRaca, C.CodMae from  Cao C, Raca R, Cao M, Cao P,Raca  RP, Raca RM
+where C.CodRaca = R.CodRaca and C.CodPai = P.NumPedigre and C.CodMae = M.NumPedigre and RP.CodRaca = P.CodRaca and RM.CodRaca = M.CodRaca
 order by C.NomeCao;
 
+/*Questão 07
+Liste o nome dos cães, o nome da competição que eles participaram, a data da competição, e a colocação destes cães nestas competições
+*/
 select C.NomeCao, Comp.DescCompeticao, CC.CodCompeticao, Comp.DataCompeticao, CC.Colocacao from  Cao C, Competicao Comp, Cao_Competicao CC
 where CC.CodCompeticao = Comp.CodCompeticao and  C.NumPedigre = CC.NumPedigre
 order by CC.Colocacao;
 
+/*Questão 08
+Liste o nome dos cães, o nome dos seus donos, o nome da competição que eles participaram, a data da competição, e a colocação destes cães nestas competições
+*/
 select C.NomeCao, Cli.NomeCliente, Comp.DescCompeticao, CC.CodCompeticao, Comp.DataCompeticao, CC.Colocacao from  Cao C, Competicao Comp, Cao_Competicao CC, Cliente Cli
 where CC.CodCompeticao = Comp.CodCompeticao and  C.NumPedigre = CC.NumPedigre and Cli.CodCliente = C.CodCliente
 order by CC.Colocacao;
 
-select C.NomeCao, Cli.NomeCliente, C.NomeRaca, R.Tamanho from  Cao C,  Raca R, Cliente Cli
-where C.CodCliente = Cli.CodCliente, C.CodRaca = R.CodRaca
-order by CC.Colocacao;
+/*Não tem idade média na tabela raça, então fiz com o tamanho médio*/
+/*
+Questão 09
+Liste cada cão, seu dono e sua raça, juntamente com a idade média da raça
+*/
+select C.NomeCao, Cli.NomeCliente, R.NomeRaca, R.Tamanho from  Cao C,  Raca R, Cliente Cli
+where C.CodCliente = Cli.CodCliente and C.CodRaca = R.CodRaca
+order by Cli.NomeCliente;
+
+/*Questão 10
+Liste cada cão, nome do seu dono, nome do pai, nome da mãe, vacinas que tomaram e data da aplicação
+*/
+select C.NomeCao, C.NumPedigre, Cli.NomeCliente, M.NomeCao as "Mãe", P.NomeCao as "Pai", V.TipoVacina, CV.DataAplicacao, C.CodPai, C.CodMae, R.NomeRaca, R.CodRaca from  Cao C, Raca R, Cliente Cli, Cao_Vacina CV, Vacina V, Cao M, Cao P
+where C.CodRaca = R.CodRaca and C.CodCliente = Cli.CodCliente and C.CodRaca = R.CodRaca and C.NumPedigre = CV.NumPedigre and V.CodVacina = CV.CodVacina and C.CodPai = P.NumPedigre and C.CodMae = M.NumPedigre
+order by C.NomeCao;
+
+/*Lista 2 - Junções*/
+
+/*HAVING*/
+/*1. Liste quantos clientes do Canil tem mais de um cão*/
+select Cli.NomeCliente, count(C.CodCliente) from Cliente Cli, Cao C
+where Cli.CodCliente = C.CodCliente
+group by Cli.NomeCliente
+having count(C.CodCliente) > 1;
+
+/*2. Liste os cães machos que tem mais de um filho*/
+select C.NomeCao, count(P.CodPai) from Cao C, Cao P
+where P.CodPai = C.NumPedigre
+group by C.NomeCao
+having count(P.CodPai) > 1;
+
+/*3. Liste as raças que tenham mais de três cães no canil*/
+
+select R.NomeRaca, count(C.CodRaca) as "Quantidade de Cães" from Cao C, Raca R 
+where C.CodRaca = R.CodRaca
+group by R.NomeRaca
+having count(C.CodRaca) > 3;
+
+/*INNER JOIN*/
+/*
+1. Liste as raças com seus respectivos cães*/
+select C.NomeCao, R.NomeRaca from Raca R inner join Cao C
+on R.CodRaca = C.CodRaca
+group by C.NomeCao;
+/*
+2. Liste as raças e as quantidades de cães*/
+select R.NomeRaca, count(C.CodRaca) as "Quantidade de Cães" from Raca R inner join Cao C
+on R.CodRaca = C.CodRaca
+group by R.NomeRaca;
+/*
+3. Liste as raças e as quantidades de cães, somente das raças que tiverem mais de 3 cães*/
+select R.NomeRaca, count(C.CodRaca) as "Quantidade de Cães" from Raca R inner join Cao C
+on R.CodRaca = C.CodRaca
+group by R.NomeRaca 
+having count(C.CodRaca) > 3;
+/*
+4. Liste cada cão o e número de competições em que ele participou*/
+select C.NomeCao, count(CC.CodCompeticao) as "Quantidade de Competições" from Cao C inner join Cao_Competicao CC
+on C.NumPedigre = CC.NumPedigre
+group by C.NomeCao;
+/*
+5. Liste cada cão e o número de competições em que ele participou, somente se forem 
+mais de duas*/
+select C.NomeCao, count(CC.CodCompeticao) as "Quantidade de Competições" from Cao C inner join Cao_Competicao CC
+on C.NumPedigre = CC.NumPedigre
+group by C.NomeCao
+having count(CC.CodCompeticao) >2;
+/*
+6. Liste todos os treinadores e o número de cães que eles treinaram, somente, se forem 
+mais de dois cães*/
+
+select T.NomeTreinador, count(CT.NumPedigre) as "Quantidade de Cães Treinados" from Treinador T inner join Cao_Treinador CT
+on T.CodTreinador = CT.CodTreinador
+group by T.NomeTreinador
+having count(CT.NumPedigre) >3;
+/*
+7. Liste quantas vezes foi dada cada vacina, mas somente as que foram dadas mais de 3 
+vezes*/
+
+select V.TipoVacina as "Nome Vacina", count(CV.CodVacina) as "Quantidade de Aplicações" from Vacina V inner join Cao_Vacina CV
+on V.CodVacina = CV.CodVacina
+group by V.TipoVacina 
+having count(CV.CodVacina) > 3;
+/*
+LEFT OUTER JOIN
+1. Liste quantos cães cada cliente tem, até os que tem zero cães
+*/
+select Cli.NomeCliente, count(C.CodCliente) as "Quantidade de Cães" from Cliente Cli left outer join Cao C
+on Cli.CodCliente = C.CodCliente
+group by Cli.NomeCliente;
+/*
+2. Liste quantos cães cada raça tem, até as raças que não tem cães
+*/
+select R.NomeRaca, count(C.CodRaca) as "Quantidade de Cães" from Raca R left outer join Cao C
+on R.CodRaca = C.CodRaca 
+group by R.NomeRaca;
+
+/*
+3. Liste o número de treinos que cada treinador fez, até os treinadores que tiveram zero 
+treinos
+*/
+select T.NomeTreinador, count(CT.CodTreinador) as "Quantidade de Treinos" from Treinador T left outer join Cao_Treinador CT
+on T.CodTreinador = CT.CodTreinador
+group by T.NomeTreinador;
+/*
+4. Liste quantas vezes foi dada cada vacina, até as que não foram dadas*/
+
+select V.TipoVacina as "Nome Vacina", count(CV.CodVacina) as "Quantidade de Aplicações" from Vacina V left outer join Cao_Vacina CV
+on V.CodVacina = CV.CodVacina
+group by V.TipoVacina;
+/*
+CROSS JOIN
+1. Liste todos os possíveis cães e donos*/
+select Cli.NomeCliente, C.NomeCao from Cliente Cli cross join Cao C;
+/*
+2. Liste todas os possíveis cães e raças*/
+select C.NomeCao, R.NomeRaca from Raca R cross join Cao C;
+/*
+3. Liste todos os possíveis cães e pais*/
+select C.NomeCao, P.NomeCao as "Possíveis Pais" from Cao C cross join Cao P where P.NumPedigre <> C.NumPedigre;
+/*
+4. Liste todos os possíveis cães e mães*/
+select C.NomeCao, M.NomeCao as "Possiveis Mães" from Cao C cross join Cao M where M.NumPedigre <> C.NumPedigre
