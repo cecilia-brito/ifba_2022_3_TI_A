@@ -504,4 +504,87 @@ select C.NomeCao, R.NomeRaca from Raca R cross join Cao C;
 select C.NomeCao, P.NomeCao as "Possíveis Pais" from Cao C cross join Cao P where P.NumPedigre <> C.NumPedigre;
 /*
 4. Liste todos os possíveis cães e mães*/
-select C.NomeCao, M.NomeCao as "Possiveis Mães" from Cao C cross join Cao M where M.NumPedigre <> C.NumPedigre
+select C.NomeCao, M.NomeCao as "Possiveis Mães" from Cao C cross join Cao M where M.NumPedigre <> C.NumPedigre;
+
+/*Lista 3 - Agrupamentos*/
+
+/*1. Liste quantos filhos cada cão macho tem*/
+select C.NomeCao, count(P.CodPai) as "Quantidade de Filhos" from Cao C, Cao P
+where P.CodPai = C.NumPedigre
+group by C.NomeCao;
+/*
+2. Liste quantos filhos cada cão fêmea tem*/
+select C.NomeCao, count(M.CodMae) as "Quantidade de Filhos" from Cao C, Cao M
+where M.CodMae = C.NumPedigre
+group by C.NomeCao;
+/*
+3. Liste quantos cães cada cliente do Canil tem*/
+select Cli.NomeCliente, count(C.CodCliente) as "Quantidade de Cães" from Cliente Cli left outer join Cao C
+on Cli.CodCliente = C.CodCliente
+group by Cli.NomeCliente;
+/*
+4. Liste qual a média do valor de venda dos cães de cada cliente*/
+select Cli.NomeCliente, avg(R.ValorVenda) as "Média do valor de venda do cliente" from Cao C, Cliente Cli inner join Raca R
+where Cli.CodCliente = C.CodCliente and C.CodRaca = R.CodRaca
+group by Cli.NomeCliente;
+
+/* 5. Liste quantos cães de cada raça existem cadastrados no canil*/
+select R.NomeRaca, count(C.CodRaca) as "Quantidade de Cães" from Raca R left outer join Cao C
+on R.CodRaca = C.CodRaca
+group by R.NomeRaca ;
+/*
+6. Liste quantos cães de cada raça participaram das competições*/
+select R.NomeRaca, count(C.NumPedigre) as "Quantidade de Competições" from Raca R,Cao C inner join Cao_Competicao CC
+where C.NumPedigre = CC.NumPedigre and C.CodRaca = R.CodRaca
+group by R.NomeRaca;
+/*
+7. Liste as vacinas cadastradas que realmente foram aplicadas em cães e suas 
+quantidades de aplicação*/
+select V.TipoVacina as "Nome Vacina", count(CV.CodVacina) as "Quantidade de Aplicações" from Vacina V inner join Cao_Vacina CV
+on V.CodVacina = CV.CodVacina
+group by V.TipoVacina;
+/*
+8. Liste quantos cães cada treinador treinou
+*/
+select T.NomeTreinador, count(CT.NumPedigre) as "Quantidade de cães treinados" from Treinador T inner join Cao_Treinador CT
+on T.CodTreinador = CT.CodTreinador
+group by T.NomeTreinador;
+/*
+9. Liste quantos cães cada treinador treinou, agrupado também pelas menções que seus 
+cães receberam - DÚVIDA*/ 
+select T.NomeTreinador, count(CT.NumPedigre) as "Quantidade de cães treinados", M.DescMencao from Mencao M,Treinador T inner join Cao_Treinador CT
+where T.CodTreinador = CT.CodTreinador and M.CodMencao = CT.CodMencao
+group by T.NomeTreinador;
+/*
+10. Liste quantas vacinas cada cão tomou*/
+select C.NomeCao, count(CV.CodVacina) as "Quantidade de Vacinas Tomadas" from Vacina V, Cao C inner join Cao_Vacina CV
+where V.CodVacina = CV.CodVacina and C.NumPedigre = CV.NumPedigre
+group by C.NomeCao;
+/*
+11. Liste o quantitativo para cada menção que foram dadas aos cães - Dúvida */
+/*
+12. Liste o peso médio dos cães de cada raça*/
+select R.NomeRaca, RR.PesoMedio as "Peso Medio" from Raca R, Raca RR
+where RR.CodRaca = R.CodRaca;
+/*
+13. Liste o cão de maior peso de cada cliente - DÚVIDA*/
+select Cli.NomeCliente,  C.NomeCao as "Cão de maior peso do cliente", max(R.PesoMedio) as "Peso Medio", R.NomeRaca from Cliente Cli, Raca R, Cao C
+where C.CodRaca = R.CodRaca and C.CodCliente = Cli.CodCliente
+group by Cli.CodCliente;
+/*
+14. Liste a média dos pesos dos cães de cada cliente*/
+select Cli.NomeCliente, avg(R.PesoMedio) as "Média do peso dos cães do cliente" from Cao C, Cliente Cli inner join Raca R
+where Cli.CodCliente = C.CodCliente and C.CodRaca = R.CodRaca
+group by Cli.NomeCliente;
+/*
+15. Liste o cão de maior valor de venda de cada cliente - DÚVIDA*/
+/*
+16. Liste a melhor colocação de cada cão nas competições*/
+select C.NomeCao, min(CC.Colocacao) as "Melhor Colocação", Comp.DescCompeticao as NomeCompeticao from Cao C, Cao_Competicao CC, Competicao Comp
+where C.NumPedigre = CC.NumPedigre and CC.CodCompeticao = Comp.CodCompeticao
+group by C.NomeCao;
+/*
+17. Liste a pior colocação de cada cão nas competições*/
+select C.NomeCao, max(CC.Colocacao) as "Pior Colocação", Comp.DescCompeticao as NomeCompeticao from Cao C, Cao_Competicao CC, Competicao Comp
+where C.NumPedigre = CC.NumPedigre and CC.CodCompeticao = Comp.CodCompeticao
+group by C.NomeCao
