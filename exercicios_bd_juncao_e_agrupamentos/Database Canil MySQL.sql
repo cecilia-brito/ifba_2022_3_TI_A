@@ -168,7 +168,7 @@ INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Dobe
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Dogue Alemão',32,17.34,534,'Nenhuma');
 INSERT INTO Raca (NomeRaca,Tamanho,PesoMedio,ValorVenda,ObsGerais) VALUES ('Cocker Spaniel',68,17.77,888,'Nenhuma');
 -- MOSTRANDO OS VALORES INSERIDOS
-SELECT * FROM Raca
+SELECT * FROM Raca;
 
 -- COMECANDO OS INSERTS NA TABELA CLIENTE
 INSERT INTO Cliente (TipoDocumento,NumDocumento,NomeCliente,EnderecoCliente,TelefoneCliente) VALUES ('CPF','67086283715','Ana','Rua do Pau Bandeira','3631-7127');
@@ -187,7 +187,7 @@ INSERT INTO Cliente (TipoDocumento,NumDocumento,NomeCliente,EnderecoCliente,Tele
 INSERT INTO Cliente (TipoDocumento,NumDocumento,NomeCliente,EnderecoCliente,TelefoneCliente) VALUES ('CPF','34318832418','Vinícius','Rua Final Feliz','3632-8263');
 INSERT INTO Cliente (TipoDocumento,NumDocumento,NomeCliente,EnderecoCliente,TelefoneCliente) VALUES ('RG','23125165907','Rodrigo','Rua da Música Aquática','3631-3163');
 -- MOSTRANDO OS VALORES INSERIDOS
-SELECT * FROM Cliente
+SELECT * FROM Cliente;
 
 -- COMECANDO OS INSERTS NA TABELA CAO
 INSERT INTO Cao (NomeCao,Sobrenome,Cor_Conjunto_Cores,DataNascimento,CodRaca,CodCliente) VALUES ('Nina','Afrodite','Tigrado','07/09/2015',1,12);
@@ -206,7 +206,7 @@ INSERT INTO Cao (NomeCao,Sobrenome,Cor_Conjunto_Cores,DataNascimento,CodRaca,Cod
 INSERT INTO Cao (NomeCao,Sobrenome,Cor_Conjunto_Cores,DataNascimento,CodRaca,CodCliente,CodPai,CodMae) VALUES ('Toby','Zeus','Albino','14/12/2016',3,10,5,6);
 INSERT INTO Cao (NomeCao,Sobrenome,Cor_Conjunto_Cores,DataNascimento,CodRaca,CodCliente,CodPai,CodMae) VALUES ('Sansão','Monstro','Tricolor','23/10/2015',4,7,7,8);
 -- MOSTRANDO OS VALORES INSERIDOS
-SELECT * FROM Cao
+SELECT * FROM Cao;
 
 -- COMECANDO OS INSERTS NA TABELA Treinador
 INSERT INTO Treinador (NomeTreinador,EnderecoTreinador,TelefoneTreinador) VALUES ('Áquila','Phoc1','40028922');
@@ -225,7 +225,7 @@ INSERT INTO Treinador (NomeTreinador,EnderecoTreinador,TelefoneTreinador) VALUES
 INSERT INTO Treinador (NomeTreinador,EnderecoTreinador,TelefoneTreinador) VALUES ('Lulu','Phoc14','40028935');
 INSERT INTO Treinador (NomeTreinador,EnderecoTreinador,TelefoneTreinador) VALUES ('Annie','Phoc15','40028936');
 -- MOSTRANDO OS VALORES INSERIDOS
-SELECT * FROM Treinador
+SELECT * FROM Treinador;
 
 -- COMECANDO OS INSERTS NA TABELA Vacina
 INSERT INTO Vacina (TipoVacina,DescVacina) VALUES ('Hcv','seila');
@@ -244,7 +244,7 @@ INSERT INTO Vacina (TipoVacina,DescVacina) VALUES ('Hepatite S','seila');
 INSERT INTO Vacina (TipoVacina,DescVacina) VALUES ('Hepatite P','seila');
 INSERT INTO Vacina (TipoVacina,DescVacina) VALUES ('Hepatite H','seila');
 -- MOSTRANDO OS VALORES INSERIDOS
-SELECT * FROM Vacina
+SELECT * FROM Vacina;
 
 -- COMECANDO OS INSERTS NA TABELA Competicao
 INSERT INTO Competicao (DescCompeticao,DataCompeticao) VALUES ('Agility',STR_TO_DATE('11/07/2015', '%d/%m/%Y'));
@@ -263,7 +263,7 @@ INSERT INTO Competicao (DescCompeticao,DataCompeticao) VALUES ('Schutzhund',STR_
 INSERT INTO Competicao (DescCompeticao,DataCompeticao) VALUES ('Surf',STR_TO_DATE('04/06/2009', '%d/%m/%Y'));
 INSERT INTO Competicao (DescCompeticao,DataCompeticao) VALUES ('Skateboarding Dog',STR_TO_DATE('03/08/2000', '%d/%m/%Y'));
 -- MOSTRANDO OS VALORES INSERIDOS
-SELECT * FROM Competicao
+SELECT * FROM Competicao;
 
 -- COMECANDO OS INSERTS NA TABELA Mencao
 INSERT INTO Mencao (DescMencao) VALUES ('Fraco');
@@ -271,7 +271,7 @@ INSERT INTO Mencao (DescMencao) VALUES ('Regular');
 INSERT INTO Mencao (DescMencao) VALUES ('Bom');
 INSERT INTO Mencao (DescMencao) VALUES ('Ótimo');
 -- MOSTRANDO OS VALORES INSERIDOS
-SELECT * FROM Mencao
+SELECT * FROM Mencao;
 
 -- COMECANDO OS INSERTS NA TABELA Cao_Treinador
 INSERT INTO Cao_Treinador (NumPedigre,CodTreinador,CodMencao, Data_treino) VALUES (10,11,3,STR_TO_DATE('03/08/2016', '%d/%m/%Y'));
@@ -290,7 +290,7 @@ INSERT INTO Cao_Treinador (NumPedigre,CodTreinador,CodMencao, Data_treino) VALUE
 INSERT INTO Cao_Treinador (NumPedigre,CodTreinador,CodMencao, Data_treino) VALUES (11,3,1,STR_TO_DATE('05/03/2016', '%d/%m/%Y'));
 INSERT INTO Cao_Treinador (NumPedigre,CodTreinador,CodMencao, Data_treino) VALUES (12,8,1,STR_TO_DATE('06/07/2016', '%d/%m/%Y'));
 -- MOSTRANDO OS VALORES INSERIDOS
-SELECT * FROM Cao_Treinador
+SELECT * FROM Cao_Treinador;
 
 -- COMECANDO OS INSERTS NA TABELA Cao_Vacina
 INSERT INTO Cao_Vacina (NumPedigre,CodVacina,DataAplicacao) VALUES (13,6,'05/04/2004');
@@ -309,7 +309,7 @@ INSERT INTO Cao_Vacina (NumPedigre,CodVacina,DataAplicacao) VALUES (9,7,'01/06/2
 INSERT INTO Cao_Vacina (NumPedigre,CodVacina,DataAplicacao) VALUES (14,15,'04/04/2002');
 INSERT INTO Cao_Vacina (NumPedigre,CodVacina,DataAplicacao) VALUES (2,14,'12/06/2014');
 -- MOSTRANDO OS VALORES INSERIDOS
-SELECT * FROM Cao_Vacina
+SELECT * FROM Cao_Vacina;
 
 -- COMECANDO OS INSERTS NA TABELA Cao_Competicao
 INSERT INTO Cao_Competicao (NumPedigre,CodCompeticao,Colocacao) VALUES (15,1,4);
@@ -328,7 +328,7 @@ INSERT INTO Cao_Competicao (NumPedigre,CodCompeticao,Colocacao) VALUES (11,7,1);
 INSERT INTO Cao_Competicao (NumPedigre,CodCompeticao,Colocacao) VALUES (13,5,4);
 INSERT INTO Cao_Competicao (NumPedigre,CodCompeticao,Colocacao) VALUES (6,3,3);
 
-select * from Cao_Competicao
+select * from Cao_Competicao;
 /*Lista 1 
 Questão 01
 Liste o Nome do treinador, seu endereço e telefone, e, o nome de todos os cães que ele treinou , as menções, a data de treinamento.*/
@@ -557,27 +557,39 @@ where T.CodTreinador = CT.CodTreinador and M.CodMencao = CT.CodMencao
 group by T.NomeTreinador;
 /*
 10. Liste quantas vacinas cada cão tomou*/
-select C.NomeCao, count(CV.CodVacina) as "Quantidade de Vacinas Tomadas" from Vacina V, Cao C inner join Cao_Vacina CV
+select C.NomeCao, count(CV.CodVacina) as QuantidadedeVacinasTomadas from Vacina V, Cao C inner join Cao_Vacina CV
 where V.CodVacina = CV.CodVacina and C.NumPedigre = CV.NumPedigre
 group by C.NomeCao;
 /*
-11. Liste o quantitativo para cada menção que foram dadas aos cães - Dúvida */
+11. Liste o quantitativo para cada menção que foram dadas aos cães */
+select M.DescMencao, count(CT.CodMencao) from Mencao M inner join Cao_Treinador CT
+where M.CodMencao = CT.CodMencao
+group by M.DescMencao;
 /*
 12. Liste o peso médio dos cães de cada raça*/
 select R.NomeRaca, RR.PesoMedio as "Peso Medio" from Raca R, Raca RR
 where RR.CodRaca = R.CodRaca;
 /*
-13. Liste o cão de maior peso de cada cliente - DÚVIDA*/
-select Cli.NomeCliente,  C.NomeCao as "Cão de maior peso do cliente", max(R.PesoMedio) as "Peso Medio", R.NomeRaca from Cliente Cli, Raca R, Cao C
-where C.CodRaca = R.CodRaca and C.CodCliente = Cli.CodCliente
-group by Cli.CodCliente;
+13. Liste o cão de maior peso de cada cliente - DÚVIDA - lembrar professora de tirar nome da raça e nome do cao da questão*/
+
+select Cli.NomeCliente,    max(R.PesoMedio) as "Peso Medio" 
+from Cliente Cli, Raca R, Cao C
+where C.CodRaca = R.CodRaca 
+and C.CodCliente = Cli.CodCliente
+group by Cli.NomeCliente, R.NomeRaca;
+
 /*
 14. Liste a média dos pesos dos cães de cada cliente*/
 select Cli.NomeCliente, avg(R.PesoMedio) as "Média do peso dos cães do cliente" from Cao C, Cliente Cli inner join Raca R
 where Cli.CodCliente = C.CodCliente and C.CodRaca = R.CodRaca
 group by Cli.NomeCliente;
 /*
-15. Liste o cão de maior valor de venda de cada cliente - DÚVIDA*/
+15. Liste o cão de maior valor de venda de cada cliente - DÚVIDA - lembrar professora de tirar nome da raça e nome do cao da questão*/
+select Cli.NomeCliente,    max(R.ValorVenda) as "maior Valor venda" 
+from Cliente Cli, Raca R, Cao C
+where C.CodRaca = R.CodRaca 
+and C.CodCliente = Cli.CodCliente
+group by Cli.NomeCliente;
 /*
 16. Liste a melhor colocação de cada cão nas competições*/
 select C.NomeCao, min(CC.Colocacao) as "Melhor Colocação", Comp.DescCompeticao as NomeCompeticao from Cao C, Cao_Competicao CC, Competicao Comp
