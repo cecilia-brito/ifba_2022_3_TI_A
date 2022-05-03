@@ -552,9 +552,9 @@ group by T.NomeTreinador;
 /*
 9. Liste quantos cães cada treinador treinou, agrupado também pelas menções que seus 
 cães receberam - DÚVIDA*/ 
-select T.NomeTreinador, count(CT.NumPedigre) as "Quantidade de cães treinados", M.DescMencao from Mencao M,Treinador T inner join Cao_Treinador CT
+select T.NomeTreinador,  M.DescMencao, count(CT.NumPedigre) as "Quantidade de cães treinados" from Mencao M, Treinador T inner join Cao_Treinador CT
 where T.CodTreinador = CT.CodTreinador and M.CodMencao = CT.CodMencao
-group by T.NomeTreinador;
+group by T.NomeTreinador, M.DescMencao;
 /*
 10. Liste quantas vacinas cada cão tomou*/
 select C.NomeCao, count(CV.CodVacina) as QuantidadedeVacinasTomadas from Vacina V, Cao C inner join Cao_Vacina CV
@@ -576,7 +576,7 @@ select Cli.NomeCliente,    max(R.PesoMedio) as "Peso Medio"
 from Cliente Cli, Raca R, Cao C
 where C.CodRaca = R.CodRaca 
 and C.CodCliente = Cli.CodCliente
-group by Cli.NomeCliente, R.NomeRaca;
+group by Cli.NomeCliente;
 
 /*
 14. Liste a média dos pesos dos cães de cada cliente*/
