@@ -41,5 +41,9 @@ public class Person {
             return false;
         }
     }
+    @Override
+    public String toString(){
+        return "Pessoa{" + "nome=" + nome + ", idade=" + idade + "}";
+    }
     
 }
