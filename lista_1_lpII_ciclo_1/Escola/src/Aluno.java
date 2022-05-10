@@ -21,8 +21,8 @@ public class Aluno {
    DecimalFormat df = new DecimalFormat("#.00");
     
     public double calcularMedia(){
-        this.media = Math.round(((nota_prova1 * 2.5) + (nota_prova2 * 2.5) + (nota_trabalho * 2))/ (2.5 + 2.5 + 2));
-        System.out.println("A média do aluno: " + this.nomeAluno + "é: " + df.format(this.media));
+        this.media = ((nota_prova1 * 2.5) + (nota_prova2 * 2.5) + (nota_trabalho * 2))/ (2.5 + 2.5 + 2);
+        System.out.println("A média do aluno: " + this.nomeAluno + " é: " + df.format(this.media));
         return this.media;
     }
     public boolean estaAprovado(){
