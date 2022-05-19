@@ -27,10 +27,10 @@ public class Aluno {
     }
     public boolean estaAprovado(){
         if(this.media >= 6){
-            System.out.println("Aluno: " + this.nomeAluno + " Matrícula: " + this.matricula + " foi aprovado");
+            System.out.println(" O aluno: " + this.nomeAluno + " de matrícula: " + this.matricula + " foi aprovado");
             return true;
         } else{
-            System.out.println("Aluno: " + this.nomeAluno + " Matrícula: " + this.matricula +  " foi reprovado");
+            System.out.println("O aluno: " + this.nomeAluno + " de matrícula: " + this.matricula +  " foi reprovado");
             return false;
         }
     }
