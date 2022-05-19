@@ -67,10 +67,12 @@ public class Carro {
         if(num == 1){
             this.velocidade += 5;
             System.out.println("A velocidade é de: "+ this.velocidade +"km/h");
-        } else if(num == -1){
+        } else if(num == -1 && this.velocidade > 0){
             this.velocidade -= 5;
             System.out.println("A velocidade é de: "+ this.velocidade +"km/h");
-        }else{
+        } else if(num == 0){
+            freiaCarro();
+        } else{
             System.out.println("ERRO. INSIRA UM PARÂMETRO VÁLIDO");
         }
     }
@@ -78,15 +80,14 @@ public class Carro {
     public void freiaCarro(){
         this.velocidade = 0;
         System.out.println("O carro foi freiado!\n");
-        System.out.println("A velocidade é de: "+ this.velocidade +"km/h");
     }
     
     public void mostraStatusCarro(){
+        System.out.println("\n");
         System.out.println("  ______");
         System.out.println(" //|_||_\\`.__");
         System.out.println("(   _    _ _\\");
         System.out.println("=`-(_)--(_)-'"); 
-        System.out.println("\n");
         System.out.println("A placa do carro é:" + this.placaCarro);
         System.out.println("A marca do carro é: " + this.marca);
         System.out.println("O modelo do carro é: " + this.modelo);
@@ -94,5 +95,4 @@ public class Carro {
         System.out.println("O ano do carro é: " + this.ano);
         System.out.println("A velocidade atual do carro é: " + this.velocidade);   
     }
-}
-        
+}    
