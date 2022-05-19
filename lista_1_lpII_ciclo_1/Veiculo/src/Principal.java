@@ -42,10 +42,18 @@ public class Principal {
            teclado = s1.next();
            c1.setVelocidade(Integer.parseInt(teclado));
            
-           c1.aceleraCarro(1);
+           do{
+               if(c1.getVelocidade() > 0){
+               System.out.println("Você quer acelerar? Digite '1' para sim ou '-1' para não e '0' para freiar o carro");
+               } else{
+                   System.out.println("Você quer acelerar? Digite '1' para sim ou '0' para freiar o carro");
+               }
+               teclado = s1.next();
+               c1.aceleraCarro(Integer.parseInt(teclado));
+           }while(teclado.equals("1") || teclado.equals("-1"));
            c1.freiaCarro();
-           c1.aceleraCarro(1);
            
            c1.mostraStatusCarro();
       }
 }
+
